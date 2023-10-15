@@ -17,6 +17,9 @@
       },
       "api": {
         "pantryparcelapp": {}
+      },
+      "storage": {
+        "ProductsStorage": {}
       }
     }
   }

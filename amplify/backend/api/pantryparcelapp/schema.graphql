@@ -7,7 +7,7 @@ type Todo @model {
   productName: String!
   productDescription: String!
   productPrice: Float!
-  productImage: String!
+  productImage: AWSURL!
   quantityAvailable: Int!
   brand: String
 }

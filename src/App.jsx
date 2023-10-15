@@ -15,7 +15,6 @@ import LoginPage from './components/auth/LoginPage';
 Amplify.configure(awsExports);
 
 function App() {
-  
   return(
     <div>
       <SiteNav/>

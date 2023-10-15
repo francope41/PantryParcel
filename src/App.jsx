@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Amplify, Auth } from 'aws-amplify';
+import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify';
 import {Route, Routes} from 'react-router-dom'
 
 import '@aws-amplify/ui-react/styles.css';
@@ -16,6 +15,7 @@ import LoginPage from './components/auth/LoginPage';
 Amplify.configure(awsExports);
 
 function App() {
+  
   return(
     <div>
       <SiteNav/>

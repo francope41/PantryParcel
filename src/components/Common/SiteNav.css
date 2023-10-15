@@ -1,0 +1,12 @@
+/* Navbar colors override */
+.navbar {
+    background-color: #2c3e50 !important; /* Change to your preferred color */
+}
+
+.navbar-brand, .nav-link {
+    color: #ecf0f1 !important; /* Change to your preferred color */
+}
+
+.nav-link:hover {
+    color: #3498db !important; /* Change to your preferred color for hover effect */
+}

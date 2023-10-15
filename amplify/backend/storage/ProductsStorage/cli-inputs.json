@@ -1,0 +1,14 @@
+{
+  "resourceName": "ProductsStorage",
+  "policyUUID": "0be3330b",
+  "bucketName": "productstorage",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

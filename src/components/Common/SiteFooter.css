@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 .footer {
   background: #f3f3f3;
+  padding: 3rem 9%;
 }
 
 .footer .box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-template-columns: repeat(3,1fr);
   gap: 1.5rem;
 }
 
@@ -12,6 +18,7 @@
   font-size: 2.2rem;
   color: #222;
   padding: 1rem 0;
+  font-weight: bold;
 }
 
 .footer .box-container .box p {
@@ -22,13 +29,18 @@
 
 .footer .box-container .box a {
   font-size: 1.4rem;
-  color: #666;
   padding: 1rem 0;
+  color: #666;
   display: block;
+  text-decoration: none;
+  position: relative;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for transform and opacity */
 }
 
 .footer .box-container .box a:hover {
   color: #bac34e;
+  transform: translateX(5px); /* Move text 5px to the right */
+  opacity: 0.7; /* Make text slightly transparent */
 }
 
 .footer .box-container .box a:hover i {
@@ -38,6 +50,9 @@
 .footer .box-container .box a i {
   padding-right: .5rem;
   color: #bac34e;
+  display: inline-block; /* This helps in aligning the icon properly */
+  margin-right: .5rem; /* Optional: Adds some space between the arrow and the text */
+  transition: color 0.3s ease-in-out; /* Smooth transition for color change */
 }
 
 .footer .box-container .box form input[type="email"] {
@@ -59,4 +74,5 @@
   background: #bac34e;
   color: #fff;
   font-size: 2rem;
+  padding: 1rem 0;
 }

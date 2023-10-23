@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.heading {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.heading h1 {
+  font-size: 3rem;
+  color: #222;
+}
+
+.heading p {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.heading a {
+  color: #bac34e;
+  text-decoration: none;
+}
+
+.category,
+.products {
+  padding: 4rem 0;
+}
+
+.category .title,
+.products .title {
+  text-align: center;
+  font-size: 3rem;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+.category .title span,
+.products .title span {
+  color: #bac34e;
+}
+
+.category .title a,
+.products .title a {
+  font-size: 1.5rem;
+  color: #666;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}
+
+.box {
+  text-align: center;
+  text-decoration: none;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.box:hover {
+  color: #bac34e;
+}
+
+.box img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.box h3 {
+  font-size: 2rem;
+}
+
+.products .box {
+  background: #f3f3f3;
+  overflow: hidden;
+  position: relative;
+}
+
+.products .icons {
+  position: absolute;
+  top: -105%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(243, 243, 243, 0.8);
+  gap: 1rem;
+  transition: top 0.3s;
+}
+
+.products .box:hover .icons {
+  top: 0;
+}
+
+.products .icons a {
+  font-size: 2rem;
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  background: #fff;
+  color: #666;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, color 0.3s;
+}
+
+.products .icons a:hover {
+  background: #bac34e;
+  color: #fff;
+}
+
+.products .box .image {
+  height: 30rem;
+}
+
+.products .box .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.products .box .content {
+  padding: 1.5rem;
+}
+
+.products .box .content h3 {
+  font-size: 2rem;
+  color: #222;
+}
+
+.products .box .content .price {
+  font-size: 2rem;
+  color: #222;
+  padding: 1rem 0;
+}
+
+.products .box .content .stars i {
+  font-size: 1.7rem;
+  color: #bac34e;
+}

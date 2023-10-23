@@ -17,7 +17,6 @@ Amplify.configure(awsExports);
 
 function App() {
   return (
-    <Router>
       <div>
         <SiteNav />
         <Routes>
@@ -28,7 +27,6 @@ function App() {
         </Routes>
         <SiteFooter />
       </div>
-    </Router>
   );
 }
 

@@ -5,19 +5,20 @@ import { listTodos } from '../../graphql/queries';
 function Products() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const fetchProducts = async () => {
     try {
       const productData = await API.graphql(graphqlOperation(listTodos));
+      console.log(productData)
       const productList = productData.data.listTodos.items;
       setProducts(productList);
     } catch (error) {
       console.log('error on fetching products', error);
     }
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   
   const formatPrice = (price) => {
     return `$${price.toFixed(2)}`;

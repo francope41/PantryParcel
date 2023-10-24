@@ -5,8 +5,12 @@
 }
 
 .heading {
+  background: url(../image/heading-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
   text-align: center;
-  padding: 2rem 0;
+  padding-top: 12rem;
+  padding-bottom: 8rem;
 }
 
 .heading h1 {

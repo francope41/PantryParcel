@@ -21,6 +21,7 @@ function App() {
         <SiteNav />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/shop" element={<ShopPage />} />
           {/* Add other routes as needed */}

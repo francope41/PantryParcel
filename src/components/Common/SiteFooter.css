@@ -34,12 +34,12 @@
   display: block;
   text-decoration: none;
   position: relative;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for transform and opacity */
+  transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for transform and opacity */
 }
 
 .footer .box-container .box a:hover {
   color: #bac34e;
-  transform: translateX(5px); /* Move text 5px to the right */
+  transform: translateX(10px); /* Move text 5px to the right */
   opacity: 0.7; /* Make text slightly transparent */
 }
 
@@ -53,12 +53,13 @@
   display: inline-block; /* This helps in aligning the icon properly */
   margin-right: .5rem; /* Optional: Adds some space between the arrow and the text */
   transition: color 0.3s ease-in-out; /* Smooth transition for color change */
+  font-size: 1.4rem;
 }
 
 .footer .box-container .box form input[type="email"] {
   width: 100%;
   padding: 1rem 1.2rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #222;
   margin: 1rem 0;
   text-transform: none;
@@ -73,6 +74,6 @@
   text-align: center;
   background: #bac34e;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.4rem;
   padding: 1rem 0;
 }

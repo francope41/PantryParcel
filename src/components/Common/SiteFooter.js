@@ -17,7 +17,7 @@ function SiteFooter() {
     <footer className='footer'>
       <Container className='box-container'>
         <div className="box">
-          <h3>quick links</h3>
+          <h3>Quick Links</h3>
           {["home", "shop", "about", "review", "contact"].map(link => (
             <Link to={`/${link}`} key={link}>
             <FontAwesomeIcon icon="arrow-right" /> {link}
@@ -26,7 +26,7 @@ function SiteFooter() {
         </div>
 
         <div className="box">
-          <h3>extra links</h3>
+          <h3>Extra Links</h3>
           {["my order", "my favorite", "my wishlist", "my account", "terms of use"].map(link => (
             <Link to={`/${link}`} key={link}> {/* Use Link instead of a */}
               <FontAwesomeIcon icon="arrow-right" /> {link}
@@ -35,8 +35,8 @@ function SiteFooter() {
         </div>
 
         <div className="box">
-          <h3>newsletter</h3>
-          <p>subscribe for latest updates</p>
+          <h3>Newsletter</h3>
+          <p>Subscribe for latest updates</p>
           <form action="">
             <input type="email" placeholder="enter your email" />
             <input type="submit" value="subscribe" className="btn" />

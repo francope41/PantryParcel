@@ -3,10 +3,7 @@ import { API, graphqlOperation } from 'aws-amplify';
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
 import Carousel from 'react-bootstrap/Carousel'; // <-- Import Carousel for slider
 import { createTodo } from '../../graphql/mutations';
 import { listTodos } from '../../graphql/queries';
@@ -31,6 +28,8 @@ function HomePage() {
     const fetchProduct = async () => {
         try {
             const productData = await API.graphql(graphqlOperation(listTodos));
+            console.log(productData);
+
             const productList = productData.data.listTodos.items;
             setProducts(productList);
         } catch (error) {
@@ -80,7 +79,7 @@ function HomePage() {
                         <div className="content">
                             <span>limited sales</span>
                             <h3>upto 50% off</h3>
-                            <a href="#" className="btn">shop now</a>
+                            <Button variant="primary">Shop Now</Button>
                         </div>
                     </div>
                 ))}

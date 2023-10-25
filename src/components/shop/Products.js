@@ -43,39 +43,66 @@ function Products() {
 
   return (
     <section className="products">
-      <h1 className="title">Our <span>Products</span> <a href="#">view all {'>'}{'>'}</a></h1>
+      <h1 className="title">
+        Our <span>Products</span> <a href="#">view all {'>'}{'>'}</a>
+      </h1>
       <div className="box-container">
-        {products.map(product => (
-          <div className={`box ${expandedProductId === product.id ? 'expanded' : ''}`} key={product.id} style={{ display: expandedProductId !== null && expandedProductId !== product.id ? 'none' : 'block' }}>
+        {products.map((product) => (
+          <div
+            className={`box ${expandedProductId === product.id ? 'expanded' : ''}`}
+            key={product.id}
+            style={{
+              display: expandedProductId !== null && expandedProductId !== product.id ? 'none' : 'block',
+            }}
+          >
             <div className="icons">
-              <FontAwesomeIcon className='icon-FA' icon={faShoppingCart} onClick={() => handleAddToCart(product)} />
-              <FontAwesomeIcon className='icon-FA' icon={faHeart} onClick={() => toggleLike(product.id)} style={{ color: likedProducts[product.id] ? 'red' : undefined }} />
-              <FontAwesomeIcon className='icon-FA' icon={faEye} onClick={() => handleExpand(product.id)} />
+              <FontAwesomeIcon
+                className="icon-FA"
+                icon={faShoppingCart}
+                onClick={() => handleAddToCart(product)}
+              />
+              <FontAwesomeIcon
+                className="icon-FA"
+                icon={faHeart}
+                onClick={() => toggleLike(product.id)}
+                style={{ color: likedProducts[product.id] ? 'red' : undefined }}
+              />
+              <FontAwesomeIcon
+                className="icon-FA"
+                icon={faEye}
+                onClick={() => handleExpand(product.id)}
+              />
             </div>
-            <div className="image">
-              <img src={product.productImage} alt={product.productName} />
-            </div>
-            <div className="content">
-              <h3>{product.productName}</h3>
-              <div className="price">{formatPrice(product.productPrice)}</div>
-              <div className="quantity">
-                Quantity Available: {product.quantityAvailable}
-              </div>
-            </div>
-            {expandedProductId === product.id && (
-              <div className="expanded-content">
-                <h3>{product.productName}</h3>
-                <div className="price">{formatPrice(product.productPrice)}</div>
-                <div className="description">
-                  {product.productDescription}
+            {expandedProductId === product.id ? (
+              <div
+              className="expanded-content"
+              style={{ backgroundImage: `url(${product.productImage})` }}
+              >
+                <div className="overlay"> {/* Optional: To enhance text visibility */}
+                  <h3>{product.productName}</h3>
+                  <div className="price">{formatPrice(product.productPrice)}</div>
+                  <div className="description">{product.productDescription}</div>
                 </div>
               </div>
+            ) : (
+              <>
+                <div className="image">
+                  <img src={product.productImage} alt={product.productName} />
+                </div>
+                <div className="content">
+                  <h3>{product.productName}</h3>
+                  <div className="price">{formatPrice(product.productPrice)}</div>
+                  <div className="quantity">
+                    Quantity Available: {product.quantityAvailable}
+                  </div>
+                </div>
+              </>
             )}
           </div>
         ))}
       </div>
     </section>
   );
-}
+            }
 
 export default Products;

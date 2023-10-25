@@ -3,11 +3,24 @@ import { API, graphqlOperation, Storage } from 'aws-amplify';
 import { listTodos } from '../../graphql/queries';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faHeart, faEye, faStar } from '@fortawesome/free-solid-svg-icons'
-import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
-import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [likedProducts, setLikedProducts] = useState({});
+  const [expandedProductId, setExpandedProductId] = useState(null);
+
+  const handleExpand = (productId) => {
+    setExpandedProductId((prev) => (prev === productId ? null : productId));
+  };
+
+  const handleAddToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
+  const toggleLike = (productId) => {
+    setLikedProducts((prev) => ({ ...prev, [productId]: !prev[productId] }));
+  };
 
   const fetchProducts = async () => {
     try {
@@ -28,31 +41,16 @@ function Products() {
     return `$${price.toFixed(2)}`;
   };
 
-  
-  const generateStars = () => {
-    const rating = Math.floor(Math.random() * 6); // Generate a random number between 0 and 5
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push(<FontAwesomeIcon icon={faStarSolid} key={i} />);
-      } else {
-        stars.push(<FontAwesomeIcon icon={faStarRegular} key={i} />);
-      }
-    }
-    return stars;
-  };
-
   return (
     <section className="products">
       <h1 className="title">Our <span>Products</span> <a href="#">view all {'>'}{'>'}</a></h1>
       <div className="box-container">
         {products.map(product => (
-          <div className="box" key={product.id}>
+          <div className={`box ${expandedProductId === product.id ? 'expanded' : ''}`} key={product.id} style={{ display: expandedProductId !== null && expandedProductId !== product.id ? 'none' : 'block' }}>
             <div className="icons">
-              <FontAwesomeIcon icon={faShoppingCart} />
-              <FontAwesomeIcon icon={faHeart} />
-              <FontAwesomeIcon icon={faEye} />
-              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon className='icon-FA' icon={faShoppingCart} onClick={() => handleAddToCart(product)} />
+              <FontAwesomeIcon className='icon-FA' icon={faHeart} onClick={() => toggleLike(product.id)} style={{ color: likedProducts[product.id] ? 'red' : undefined }} />
+              <FontAwesomeIcon className='icon-FA' icon={faEye} onClick={() => handleExpand(product.id)} />
             </div>
             <div className="image">
               <img src={product.productImage} alt={product.productName} />
@@ -60,17 +58,19 @@ function Products() {
             <div className="content">
               <h3>{product.productName}</h3>
               <div className="price">{formatPrice(product.productPrice)}</div>
-              {/* <div className="description">
-                {product.productDescription}
-              </div> */}
               <div className="quantity">
                 Quantity Available: {product.quantityAvailable}
               </div>
-              <div className="stars">
-                {/* You can add rating functionality here if needed */}
-                {generateStars()}
-              </div>
             </div>
+            {expandedProductId === product.id && (
+              <div className="expanded-content">
+                <h3>{product.productName}</h3>
+                <div className="price">{formatPrice(product.productPrice)}</div>
+                <div className="description">
+                  {product.productDescription}
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -81,6 +81,13 @@
   font-size: 2rem;
 }
 
+.products .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
 .products .box {
   background: #f3f3f3;
   overflow: hidden;
@@ -99,10 +106,6 @@
   background: rgba(243, 243, 243, 0.8);
   gap: 1rem;
   transition: top 0.3s;
-}
-
-
-.products .icons {
   font-size: 2rem;
   height: 5rem;
   line-height: 5rem;
@@ -112,9 +115,18 @@
   transition: background 0.3s, color 0.3s;
 }
 
-.products .icons a:hover {
-  background: #bac34e;
-  color: #fff;
+.products .icon-FA {
+  color: #666;
+}
+.products .icon-FA:hover {
+  color: #bac34e;
+  transition: background 0.3s, color 0.3s;
+
+}
+
+.products .icons:hover {
+  color: #bac34e;
+  cursor: pointer;
 }
 
 .products .box .image {

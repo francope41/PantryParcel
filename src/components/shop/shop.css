@@ -218,3 +218,15 @@
 .products .box:not(.expanded):hover .icons {
   display: flex;
 }
+
+.added-to-cart-message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+  z-index: 1000;
+}

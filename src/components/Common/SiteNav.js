@@ -5,10 +5,15 @@ import { Container, Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import './SiteNav.css';
+import { useCart } from '../CartProvider/CartProvider';
+import CartDropdown from '../CartProvider/CartDropdown'; // Adjust the path as needed
 
 function SiteNav() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [showCartDropdown, setShowCartDropdown] = useState(false);
+  const { cart } = useCart();
+  const total = cart.reduce((acc, item) => acc + item.productPrice, 0);
 
   useEffect(() => {
     checkUser();
@@ -53,7 +58,14 @@ function SiteNav() {
             </Nav>
             <Nav>
               <Nav.Link><FontAwesomeIcon icon={faSearch} /></Nav.Link>
-              <Nav.Link as={Link} to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Nav.Link>
+              <Nav.Link onClick={() => setShowCartDropdown(!showCartDropdown)}>
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </Nav.Link>  
+              <CartDropdown
+                cart={cart}
+                show={showCartDropdown}
+                onClose={() => setShowCartDropdown(false)}
+              />
               {user ? (
                 <Nav.Link onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
               ) : (

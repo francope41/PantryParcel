@@ -3,19 +3,26 @@ import { API, graphqlOperation, Storage } from 'aws-amplify';
 import { listTodos } from '../../graphql/queries';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faHeart, faEye, faStar } from '@fortawesome/free-solid-svg-icons'
+import { useCart } from '../CartProvider/CartProvider';
 
 function Products() {
+  const [addedToCartMessage, setAddedToCartMessage] = useState(null);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setAddedToCartMessage(`${product.productName} added to cart!`);
+    setTimeout(() => {
+      setAddedToCartMessage(null);
+    }, 3000); // Message will disappear after 3 seconds
+};  
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const { addToCart } = useCart();
+
   const [likedProducts, setLikedProducts] = useState({});
   const [expandedProductId, setExpandedProductId] = useState(null);
 
   const handleExpand = (productId) => {
     setExpandedProductId((prev) => (prev === productId ? null : productId));
-  };
-
-  const handleAddToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
   };
 
   const toggleLike = (productId) => {
@@ -43,6 +50,7 @@ function Products() {
 
   return (
     <section className="products">
+      {addedToCartMessage && <div className="added-to-cart-message">{addedToCartMessage}</div>}
       <h1 className="title">
         Our <span>Products</span> <a href="#">view all {'>'}{'>'}</a>
       </h1>

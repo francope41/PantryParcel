@@ -12,11 +12,14 @@ import SiteFooter from './components/Common/SiteFooter';
 import HomePage from './components/home/HomePage1';
 import LoginPage from './components/auth/LoginPage';
 import ShopPage from './components/shop/shop'
+import { CartProvider } from './components/CartProvider/CartProvider';
+
 
 Amplify.configure(awsExports);
 
 function App() {
   return (
+    <CartProvider>
       <div>
         <SiteNav />
         <Routes>
@@ -28,6 +31,7 @@ function App() {
         </Routes>
         <SiteFooter />
       </div>
+    </CartProvider>
   );
 }
 

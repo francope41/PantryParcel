@@ -99,4 +99,8 @@
 
 .banner .content .btn {
   padding: .8rem 2.5rem;
+  margin-top: 20px;
+  background-color: #bac34e; /* example color, you can adjust */
+  color: #fff;
+  border: none;
 }

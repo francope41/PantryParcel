@@ -84,13 +84,14 @@
 .products .box {
   background: #f3f3f3;
   overflow: hidden;
-  position: relative;
+  width: 284.54px;
+  height: 428.86px;
+  position: relative; /* Add this line */
 }
 
 .products .icons {
   position: absolute;
-  top: -105%;
-  left: 0;
+  top: 50%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -100,14 +101,10 @@
   transition: top 0.3s;
 }
 
-.products .box:hover .icons {
-  top: 0;
-}
 
-.products .icons a {
+.products .icons {
   font-size: 2rem;
   height: 5rem;
-  width: 5rem;
   line-height: 5rem;
   background: #fff;
   color: #666;
@@ -125,7 +122,6 @@
 }
 
 .products .box .image img {
-  height: 100%;
   width: 100%;
   object-fit: cover;
 }

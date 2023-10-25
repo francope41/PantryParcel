@@ -1,59 +1,36 @@
-/* Header Styles */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header .logo {
-    flex: 0 0 auto; /* This ensures the logo does not grow or shrink */
-}
-
-.header .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 2; /* Allow the navbar to grow and center itself */
-}
-
-.header .navbar a {
-    font-size: 1.7rem;
-    color: #666;
-    margin: 0 1rem;
-}
-
-.header .navbar a:hover {
-    color: #bac34e;
-}
-
-.header .icons {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto; /* This ensures the icons section does not grow or shrink */
-}
-
-.header .search-form {
+.navbar-logo {
+    margin-right: 10px;
     position: absolute;
-    top: -115%; /* This will hide the search bar */
-    right: 2rem;
-}
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px; /* Adjust as needed */
+    width: auto;
+  }
+  
+  .nav-link {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    transition: font-size 0.3s, color 0.3s;
+  }
+  .nav-link:hover {
+    color: #bac34e ;
+    font-size: medium;
+  }
+  
+  .navbar-nav {
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 
-.header .icons div.search-trigger:hover + .search-form {
-    top: 115%; /* This will show the search bar when the magnifying glass is clicked */
-}
-
-/* Responsive Navigation Styles */
-@media (max-width: 768px) {
-    #menu-btn {
-        display: inline-block;
-    }
-
-    .header .navbar a {
-        margin: 1.5rem;
-        padding: 1.5rem;
-        background: #f3f3f3;
-        font-size: 2rem;
-        display: block;
-        border-radius: .5rem;
-    }
-}
+  
+  .navbar-brand span {
+    position: relative;
+    z-index: 1;
+  }
+  

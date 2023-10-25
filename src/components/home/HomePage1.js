@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import Carousel from 'react-bootstrap/Carousel'; // <-- Import Carousel for slider
+import { useNavigate } from 'react-router-dom'; // <-- Import useNavigate
 import { createTodo } from '../../graphql/mutations';
 import { listTodos } from '../../graphql/queries';
 import homeBg from '../image/home-bg.jpg';
@@ -20,6 +21,8 @@ import './HomePage1.css'
 
 function HomePage() {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         fetchProduct();
@@ -35,6 +38,10 @@ function HomePage() {
         } catch (error) {
             console.log('error on fetching products', error);
         }
+    }
+
+    const goToShop = () => { // <-- Function to navigate to /shop
+        navigate('/shop');
     }
 
     return (
@@ -55,7 +62,7 @@ function HomePage() {
                                     <div className="content">
                                         <span>fresh and organic</span>
                                         <h3>upto 50% off</h3>
-                                        <Button variant="primary">Shop Now</Button>
+                                        <Button variant="primary" onClick={goToShop}>Shop Now</Button>
                                     </div>
                                 </Col>
                                 <Col md={6}>
@@ -79,7 +86,7 @@ function HomePage() {
                         <div className="content">
                             <span>limited sales</span>
                             <h3>upto 50% off</h3>
-                            <Button variant="primary">Shop Now</Button>
+                            <Button variant="primary" onClick={goToShop}>Shop Now</Button>
                         </div>
                     </div>
                 ))}

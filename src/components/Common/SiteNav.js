@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
-import { useNavigate } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavbarBrand from 'react-bootstrap/esm/NavbarBrand';
+import { useNavigate, Link } from 'react-router-dom';
+import { Container, Nav, Navbar, NavbarBrand } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faShoppingCart, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import './SiteNav.css';
-
 
 function SiteNav() {
   const [user, setUser] = useState(null);
@@ -39,14 +37,27 @@ function SiteNav() {
     <header>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <NavbarBrand>Pantry Parcel</NavbarBrand>
+          <NavbarBrand as={Link} to="/" className="navbar-brand">
+            <img src="/img/logo.png" alt="Pantry Parcel" className="navbar-logo" />
+            <span>Pantry Parcel</span>
+          </NavbarBrand>
+
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-md-auto">
+            <Nav className="mx-auto">
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
+              <Nav.Link as={Link} to="/about">About</Nav.Link>
+              <Nav.Link as={Link} to="/review">Review</Nav.Link>
+              <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link><FontAwesomeIcon icon={faSearch} /></Nav.Link>
+              <Nav.Link as={Link} to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Nav.Link>
               {user ? (
-                <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
+                <Nav.Link onClick={handleLogout}><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
               ) : (
-                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link as={Link} to="/login"><FontAwesomeIcon icon={faSignInAlt} /></Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>

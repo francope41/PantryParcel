@@ -12,7 +12,6 @@ import SiteFooter from './components/Common/SiteFooter';
 import HomePage from './components/home/HomePage1';
 import LoginPage from './components/auth/LoginPage';
 import ShopPage from './components/shop/shop'
-import ShopPage from './components/shop/shop'
 
 Amplify.configure(awsExports);
 

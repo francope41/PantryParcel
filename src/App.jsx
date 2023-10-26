@@ -12,6 +12,8 @@ import SiteFooter from './components/Common/SiteFooter';
 import HomePage from './components/home/HomePage1';
 import LoginPage from './components/auth/LoginPage';
 import ShopPage from './components/shop/shop'
+import AboutPage from './components/about/about'
+import ReviewPage from './components/review/review'
 import { CartProvider } from './components/CartProvider/CartProvider';
 
 
@@ -27,6 +29,8 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/review" element={<ReviewPage />} />
           {/* Add other routes as needed */}
         </Routes>
         <SiteFooter />

@@ -6,6 +6,7 @@ import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import awsExports from '../../aws-exports';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'
 
 Amplify.configure(awsExports);
 
@@ -20,23 +21,23 @@ function LoginPage() {
       colors: {
         background: {
           primary: {
-            value: tokens.colors.neutral['90'].value,
+            value: '#f4f4f4', // Light grey background
           },
           secondary: {
-            value: tokens.colors.neutral['100'].value,
+            value: '#ffffff', // White background
           },
         },
         font: {
           interactive: {
-            value: tokens.colors.white.value,
+            value: '#333333', // Dark grey font color for better readability
           },
         },
         brand: {
           primary: {
-            '10': tokens.colors.teal['100'],
-            '80': tokens.colors.teal['40'],
-            '90': tokens.colors.teal['20'],
-            '100': tokens.colors.teal['10'],
+            '10': '#e6f7f2', // Light green
+            '80': '#4CAF50', // Primary green color
+            '90': '#43a047', // Slightly darker green for hover effects
+            '100': '#388e3c', // Even darker green for active or selected states
           },
         },
       },
@@ -45,17 +46,17 @@ function LoginPage() {
           item: {
             _focus: {
               color: {
-                value: tokens.colors.white.value,
+                value: '#bac34e', // White text when focused
               },
             },
             _hover: {
               color: {
-                value: tokens.colors.yellow['80'].value,
+                value: '#000000', // Light green text on hover
               },
             },
             _active: {
               color: {
-                value: tokens.colors.white.value,
+                value: '#bac34e', // White text when active
               },
             },
           },
@@ -63,6 +64,7 @@ function LoginPage() {
       },
     },
   };
+  
 
   const components = {
     Header(){
@@ -94,7 +96,7 @@ function LoginPage() {
             navigate('/');
           }
           return (
-            <main>
+            <main style={{ background: 'linear-gradient(to bottom, rgba(186, 195, 78, 0.5) 0%, white 100%)' }}>
               <h1>Hello {user && user.username}</h1>
               <button onClick={signOut}>Sign out</button>
             </main>

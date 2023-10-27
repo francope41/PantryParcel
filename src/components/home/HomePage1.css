@@ -21,7 +21,7 @@
 
 .content {
   color: rgb(0, 0, 0); /* assuming the content text should be white */
-  padding-left: 30%; /* space from the left */
+  padding-left: 10%; /* space from the left */
 }
 
 .carousel-content .btn {

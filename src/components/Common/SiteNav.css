@@ -1,14 +1,12 @@
+
 .navbar-logo {
-    margin-right: 10px;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 40px; /* Adjust as needed */
-    width: auto;
-  }
+  height: 80px; /* Adjust the height as needed */
+  width: auto;  /*Maintain aspect ratio */
+  margin-right: 10px; /* Add some space between logo and text */
+}
   
   .nav-link {
+    font-size: 1.2rem;
     text-align: center;
     padding: 0.5rem 1rem;
     transition: font-size 0.3s, color 0.3s;
@@ -20,6 +18,8 @@
   
   .navbar-nav {
     align-items: center;
+    display: flex;
+    align-items: center; 
   }
   
   .navbar-brand {

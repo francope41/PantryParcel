@@ -14,6 +14,7 @@ import LoginPage from './components/auth/LoginPage';
 import ShopPage from './components/shop/shop'
 import AboutPage from './components/about/about'
 import ReviewPage from './components/review/review'
+import ContactPage from './components/contact/contact'
 import { CartProvider } from './components/CartProvider/CartProvider';
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/review" element={<ReviewPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* Add other routes as needed */}
         </Routes>
         <SiteFooter />

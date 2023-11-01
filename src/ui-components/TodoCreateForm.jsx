@@ -7,8 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { API } from "aws-amplify";
 import { createTodo } from "../graphql/mutations";
 export default function TodoCreateForm(props) {
@@ -29,6 +28,7 @@ export default function TodoCreateForm(props) {
     productImage: "",
     quantityAvailable: "",
     brand: "",
+    category: "",
   };
   const [productName, setProductName] = React.useState(
     initialValues.productName
@@ -46,6 +46,7 @@ export default function TodoCreateForm(props) {
     initialValues.quantityAvailable
   );
   const [brand, setBrand] = React.useState(initialValues.brand);
+  const [category, setCategory] = React.useState(initialValues.category);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setProductName(initialValues.productName);
@@ -54,6 +55,7 @@ export default function TodoCreateForm(props) {
     setProductImage(initialValues.productImage);
     setQuantityAvailable(initialValues.quantityAvailable);
     setBrand(initialValues.brand);
+    setCategory(initialValues.category);
     setErrors({});
   };
   const validations = {
@@ -63,6 +65,7 @@ export default function TodoCreateForm(props) {
     productImage: [{ type: "Required" }, { type: "URL" }],
     quantityAvailable: [{ type: "Required" }],
     brand: [{ type: "Required" }],
+    category: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -96,6 +99,7 @@ export default function TodoCreateForm(props) {
           productImage,
           quantityAvailable,
           brand,
+          category,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -164,6 +168,7 @@ export default function TodoCreateForm(props) {
               productImage,
               quantityAvailable,
               brand,
+              category,
             };
             const result = onChange(modelFields);
             value = result?.productName ?? value;
@@ -193,6 +198,7 @@ export default function TodoCreateForm(props) {
               productImage,
               quantityAvailable,
               brand,
+              category,
             };
             const result = onChange(modelFields);
             value = result?.productDescription ?? value;
@@ -228,6 +234,7 @@ export default function TodoCreateForm(props) {
               productImage,
               quantityAvailable,
               brand,
+              category,
             };
             const result = onChange(modelFields);
             value = result?.productPrice ?? value;
@@ -257,6 +264,7 @@ export default function TodoCreateForm(props) {
               productImage: value,
               quantityAvailable,
               brand,
+              category,
             };
             const result = onChange(modelFields);
             value = result?.productImage ?? value;
@@ -290,6 +298,7 @@ export default function TodoCreateForm(props) {
               productImage,
               quantityAvailable: value,
               brand,
+              category,
             };
             const result = onChange(modelFields);
             value = result?.quantityAvailable ?? value;
@@ -321,6 +330,7 @@ export default function TodoCreateForm(props) {
               productImage,
               quantityAvailable,
               brand: value,
+              category,
             };
             const result = onChange(modelFields);
             value = result?.brand ?? value;
@@ -334,6 +344,36 @@ export default function TodoCreateForm(props) {
         errorMessage={errors.brand?.errorMessage}
         hasError={errors.brand?.hasError}
         {...getOverrideProps(overrides, "brand")}
+      ></TextField>
+      <TextField
+        label="Category"
+        isRequired={true}
+        isReadOnly={false}
+        value={category}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              productName,
+              productDescription,
+              productPrice,
+              productImage,
+              quantityAvailable,
+              brand,
+              category: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.category ?? value;
+          }
+          if (errors.category?.hasError) {
+            runValidationTasks("category", value);
+          }
+          setCategory(value);
+        }}
+        onBlur={() => runValidationTasks("category", category)}
+        errorMessage={errors.category?.errorMessage}
+        hasError={errors.category?.hasError}
+        {...getOverrideProps(overrides, "category")}
       ></TextField>
       <Flex
         justifyContent="space-between"

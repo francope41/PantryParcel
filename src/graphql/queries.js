@@ -11,6 +11,7 @@ export const getTodo = /* GraphQL */ `
       productImage
       quantityAvailable
       brand
+      category
       createdAt
       updatedAt
       __typename
@@ -32,6 +33,7 @@ export const listTodos = /* GraphQL */ `
         productImage
         quantityAvailable
         brand
+        category
         createdAt
         updatedAt
         __typename

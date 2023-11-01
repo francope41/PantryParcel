@@ -11,6 +11,7 @@ export const onCreateTodo = /* GraphQL */ `
       productImage
       quantityAvailable
       brand
+      category
       createdAt
       updatedAt
       __typename
@@ -27,6 +28,7 @@ export const onUpdateTodo = /* GraphQL */ `
       productImage
       quantityAvailable
       brand
+      category
       createdAt
       updatedAt
       __typename
@@ -43,6 +45,7 @@ export const onDeleteTodo = /* GraphQL */ `
       productImage
       quantityAvailable
       brand
+      category
       createdAt
       updatedAt
       __typename

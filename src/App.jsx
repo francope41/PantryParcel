@@ -16,7 +16,7 @@ import AboutPage from './components/about/about'
 import ReviewPage from './components/review/review'
 import ContactPage from './components/contact/contact'
 import { CartProvider } from './components/CartProvider/CartProvider';
-
+import Checkout from './components/Checkout/Checkout'
 
 Amplify.configure(awsExports);
 
@@ -33,6 +33,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/review" element={<ReviewPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/checkout" element={<Checkout />} />
           {/* Add other routes as needed */}
         </Routes>
         <SiteFooter />

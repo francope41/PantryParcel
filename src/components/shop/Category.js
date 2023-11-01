@@ -4,7 +4,7 @@ import cat2 from '../image/cat-2.png';
 import cat3 from '../image/cat-3.png';
 import cat4 from '../image/cat-4.png';
 import cat5 from '../image/cat-5.png';
-function Category() {
+function Category({ onCategoryClick }) {
   const categories = [
     { id: 1, image: cat1, name: "Fresh Fruits" },
     { id: 2, image: cat2, name: "Vegetables" },
@@ -18,7 +18,7 @@ function Category() {
       <h1 className="title"> Our <span>Category</span> <a href="#">view all {'>'}{'>'}</a> </h1>
       <div className="box-container">
         {categories.map(category => (
-          <a href="#" className="box" key={category.id}>
+          <a href="#" className="box" key={category.id} onClick={() => onCategoryClick(category.name)}>
             <img src={category.image} alt="" />
             <h3>{category.name}</h3>
           </a>

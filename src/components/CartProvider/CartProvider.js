@@ -9,16 +9,21 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => [...prevCart, product]);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
 };
+
 export const useCart = () => {
-    const context = useContext(CartContext);
-    if (context === undefined) {
-      throw new Error('useCart must be used within a CartProvider');
-    }
-    return context;
-  };
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
+};

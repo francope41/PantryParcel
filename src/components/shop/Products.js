@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation, Storage } from 'aws-amplify';
+import { API, graphqlOperation } from 'aws-amplify';
 import { listTodos } from '../../graphql/queries';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faHeart, faEye, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useCart } from '../CartProvider/CartProvider';
 
-function Products() {
+function Products({ selectedCategory }) {
   const [addedToCartMessage, setAddedToCartMessage] = useState(null);
+  const [products, setProducts] = useState([]);
+  const { addToCart } = useCart();
+  const [likedProducts, setLikedProducts] = useState({});
+  const [expandedProductId, setExpandedProductId] = useState(null);
 
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -14,12 +18,7 @@ function Products() {
     setTimeout(() => {
       setAddedToCartMessage(null);
     }, 3000); // Message will disappear after 3 seconds
-};  
-  const [products, setProducts] = useState([]);
-  const { addToCart } = useCart();
-
-  const [likedProducts, setLikedProducts] = useState({});
-  const [expandedProductId, setExpandedProductId] = useState(null);
+  };
 
   const handleExpand = (productId) => {
     setExpandedProductId((prev) => (prev === productId ? null : productId));
@@ -55,62 +54,64 @@ function Products() {
         Our <span>Products</span> <a href="#">view all {'>'}{'>'}</a>
       </h1>
       <div className="box-container">
-        {products.map((product) => (
-          <div
-            className={`box ${expandedProductId === product.id ? 'expanded' : ''}`}
-            key={product.id}
-            style={{
-              display: expandedProductId !== null && expandedProductId !== product.id ? 'none' : 'block',
-            }}
-          >
-            <div className="icons">
-              <FontAwesomeIcon
-                className="icon-FA"
-                icon={faShoppingCart}
-                onClick={() => handleAddToCart(product)}
-              />
-              <FontAwesomeIcon
-                className="icon-FA"
-                icon={faHeart}
-                onClick={() => toggleLike(product.id)}
-                style={{ color: likedProducts[product.id] ? 'red' : undefined }}
-              />
-              <FontAwesomeIcon
-                className="icon-FA"
-                icon={faEye}
-                onClick={() => handleExpand(product.id)}
-              />
-            </div>
-            {expandedProductId === product.id ? (
-              <div
-              className="expanded-content"
-              style={{ backgroundImage: `url(${product.productImage})` }}
-              >
-                <div className="overlay"> {/* Optional: To enhance text visibility */}
-                  <h3>{product.productName}</h3>
-                  <div className="price">{formatPrice(product.productPrice)}</div>
-                  <div className="description">{product.productDescription}</div>
-                </div>
+        {products
+          .filter(product => !selectedCategory || product.category === selectedCategory)
+          .map((product) => (
+            <div
+              className={`box ${expandedProductId === product.id ? 'expanded' : ''}`}
+              key={product.id}
+              style={{
+                display: expandedProductId !== null && expandedProductId !== product.id ? 'none' : 'block',
+              }}
+            >
+              <div className="icons">
+                <FontAwesomeIcon
+                  className="icon-FA"
+                  icon={faShoppingCart}
+                  onClick={() => handleAddToCart(product)}
+                />
+                <FontAwesomeIcon
+                  className="icon-FA"
+                  icon={faHeart}
+                  onClick={() => toggleLike(product.id)}
+                  style={{ color: likedProducts[product.id] ? 'red' : undefined }}
+                />
+                <FontAwesomeIcon
+                  className="icon-FA"
+                  icon={faEye}
+                  onClick={() => handleExpand(product.id)}
+                />
               </div>
-            ) : (
-              <>
-                <div className="image">
-                  <img src={product.productImage} alt={product.productName} />
-                </div>
-                <div className="content">
-                  <h3>{product.productName}</h3>
-                  <div className="price">{formatPrice(product.productPrice)}</div>
-                  <div className="quantity">
-                    Quantity Available: {product.quantityAvailable}
+              {expandedProductId === product.id ? (
+                <div
+                  className="expanded-content"
+                  style={{ backgroundImage: `url(${product.productImage})` }}
+                >
+                  <div className="overlay">
+                    <h3>{product.productName}</h3>
+                    <div className="price">{formatPrice(product.productPrice)}</div>
+                    <div className="description">{product.productDescription}</div>
                   </div>
                 </div>
-              </>
-            )}
-          </div>
-        ))}
+              ) : (
+                <>
+                  <div className="image">
+                    <img src={product.productImage} alt={product.productName} />
+                  </div>
+                  <div className="content">
+                    <h3>{product.productName}</h3>
+                    <div className="price">{formatPrice(product.productPrice)}</div>
+                    <div className="quantity">
+                      Quantity Available: {product.quantityAvailable}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
       </div>
     </section>
   );
-            }
+}
 
 export default Products;

@@ -6,7 +6,16 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type EscapeHatchProps = {
+    [elementHierarchy: string]: Record<string, unknown>;
+} | null;
+export declare type VariantValues = {
+    [key: string]: string;
+};
+export declare type Variant = {
+    variantValues: VariantValues;
+    overrides: EscapeHatchProps;
+};
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -19,6 +28,7 @@ export declare type TodoCreateFormInputValues = {
     productImage?: string;
     quantityAvailable?: number;
     brand?: string;
+    category?: string;
 };
 export declare type TodoCreateFormValidationValues = {
     productName?: ValidationFunction<string>;
@@ -27,6 +37,7 @@ export declare type TodoCreateFormValidationValues = {
     productImage?: ValidationFunction<string>;
     quantityAvailable?: ValidationFunction<number>;
     brand?: ValidationFunction<string>;
+    category?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TodoCreateFormOverridesProps = {
@@ -37,6 +48,7 @@ export declare type TodoCreateFormOverridesProps = {
     productImage?: PrimitiveOverrideProps<TextFieldProps>;
     quantityAvailable?: PrimitiveOverrideProps<TextFieldProps>;
     brand?: PrimitiveOverrideProps<TextFieldProps>;
+    category?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type TodoCreateFormProps = React.PropsWithChildren<{
     overrides?: TodoCreateFormOverridesProps | undefined | null;

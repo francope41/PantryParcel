@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import './shop.css'; // Importing CSS specific to Shop
 import Heading from './heading';
 import Category from './Category';
@@ -9,11 +9,18 @@ import { faShoppingCart, faHeart, faEye, /* any other icons you need */ } from '
 library.add(faShoppingCart, faHeart, faEye);
 
 function Shop() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleCategoryClick = (category) => {
+    console.log("Selected Category:", category); // This will print the selected category to the console
+    setSelectedCategory(category);
+  };
+
   return (
     <div>
       <Heading />
-      <Category />
-      <Products />
+      <Category onCategoryClick={handleCategoryClick} />
+      <Products selectedCategory={selectedCategory} />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import Category from './Category';
 import Products from './Products';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingCart, faHeart, faEye, /* any other icons you need */ } from '@fortawesome/free-solid-svg-icons';
+import { useSearchParams } from 'react-router-dom';
+
 
 library.add(faShoppingCart, faHeart, faEye);
 
@@ -20,7 +22,7 @@ function Shop() {
     <div>
       <Heading />
       <Category onCategoryClick={handleCategoryClick} />
-      <Products selectedCategory={selectedCategory} />
+      <Products selectedCategory={selectedCategory}/>
     </div>
   );
 }

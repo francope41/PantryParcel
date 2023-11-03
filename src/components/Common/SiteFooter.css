@@ -13,6 +13,9 @@
   grid-template-columns: repeat(3,1fr);
   gap: 1.5rem;
 }
+.footer .box-container .box {
+  
+}
 
 .footer .box-container .box h3 {
   font-size: 2rem;

@@ -14,6 +14,9 @@ function SiteNav() {
   const [showCartDropdown, setShowCartDropdown] = useState(false);
   const { cart } = useCart();
   const total = cart.reduce((acc, item) => acc + item.productPrice, 0);
+  const [showSearch, setShowSearch] = useState(false); // New state for search bar visibility
+  const [searchQuery, setSearchQuery] = useState(''); // State to hold the search query
+
 
   useEffect(() => {
     checkUser();
@@ -38,6 +41,12 @@ function SiteNav() {
     }
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/shop?search=${searchQuery}`); // Navigate to /shop with the search query as a URL parameter
+    setShowSearch(false); // Hide the search bar after navigating
+  };
+
   return (
     <header>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -57,7 +66,6 @@ function SiteNav() {
               <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link><FontAwesomeIcon icon={faSearch} /></Nav.Link>
               <Nav.Link onClick={() => setShowCartDropdown(!showCartDropdown)}>
                 <FontAwesomeIcon icon={faShoppingCart} />
               </Nav.Link>  

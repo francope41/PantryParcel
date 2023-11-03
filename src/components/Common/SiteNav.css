@@ -33,4 +33,21 @@
     position: relative;
     z-index: 1;
   }
+
+  .search-bar-form {
+    position: absolute;
+    top: 100%; /* Adjust as necessary */
+    right: 300px;
+    margin-top: 0.1rem; /* Spacing from the icon */
+  }
+  
+  .search-input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .search-button {
+    padding: 0.5rem;
+  }
+  
   

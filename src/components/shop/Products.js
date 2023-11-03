@@ -11,6 +11,8 @@ function Products({ selectedCategory }) {
   const { addToCart } = useCart();
   const [likedProducts, setLikedProducts] = useState({});
   const [expandedProductId, setExpandedProductId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -47,15 +49,27 @@ function Products({ selectedCategory }) {
     return `$${price.toFixed(2)}`;
   };
 
+  const visibleProducts = products
+  .filter(product => 
+    (!searchQuery || product.productName.toLowerCase().includes(searchQuery.toLowerCase())) &&
+    (!selectedCategory || product.category === selectedCategory)
+  );
   return (
     <section className="products">
+      <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+    </div>
       {addedToCartMessage && <div className="added-to-cart-message">{addedToCartMessage}</div>}
       <h1 className="title">
-        Our <span>Products</span> <a href="#">view all {'>'}{'>'}</a>
+        Our <span>Products</span>
       </h1>
       <div className="box-container">
-        {products
-          .filter(product => !selectedCategory || product.category === selectedCategory)
+        {visibleProducts
           .map((product) => (
             <div
               className={`box ${expandedProductId === product.id ? 'expanded' : ''}`}

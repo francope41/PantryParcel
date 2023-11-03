@@ -47,7 +47,11 @@ const Contact = () => {
             <input type="submit" value="Send message" className="btn" />
           </form>
 
-          <iframe className="map" src="https://www.google.com/maps/place/One+UTSA+Circle,+San+Antonio,+TX+78249/@29.5820768,-98.6210045,17z/data=!3m1!4b1!4m6!3m5!1s0x865c6661a439bd87:0xcc3a410430eb8fea!8m2!3d29.5820722!4d-98.6184296!16s%2Fg%2F11c4n605g2?entry=ttu" allowFullScreen="" loading="lazy"></iframe>
+          <iframe 
+          className="map" 
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAacSlf0rpb0TH9Ppy5dgEd20vm0PksCT4&q=One+UTSA+Circle,+San+Antonio,+TX+78249" allowfullscreen>
+          </iframe>
+
         </div>
       </section>
     </div>

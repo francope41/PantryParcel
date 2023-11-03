@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './about.css'; // Assuming you have a CSS file for styling
 import Modal from 'react-modal';
-import { FacebookShareButton, FacebookIcon  } from 'react-share';
 
 import aboutImage from '../image/about-img.jpg';
 import gallery_1 from '../image/gallery-img-1.jpg';
@@ -48,10 +47,6 @@ const GalleryBox = ({ image }) => {
       <div className="icons">
         <FontAwesomeIcon className="icon" icon={faEye} onClick={openModal} />
         <FontAwesomeIcon className="icon" icon={faHeart} style={{ color: heartClicked ? 'red' : 'white' }} onClick={toggleHeart} />
-        {/* Add your social share buttons here */}
-        <FacebookShareButton url={window.location.href} quote="Check out this amazing page!">
-        <FacebookIcon size={32} round={true} />
-      </FacebookShareButton>
       </div>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Image Modal">
         <img src={image} alt="Gallery Item" style={{ width: '100%' }} />

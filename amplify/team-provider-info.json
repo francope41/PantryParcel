@@ -20,6 +20,9 @@
       },
       "auth": {
         "pantryparcelapp65363ac2": {}
+      },
+      "api": {
+        "pantryparcelapp": {}
       }
     }
   }

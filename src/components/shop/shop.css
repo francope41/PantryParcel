@@ -9,12 +9,12 @@
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding-top: 12rem;
-  padding-bottom: 8rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .heading h1 {
-  font-size: 3rem;
+  font-size: rem;
   color: #222;
 }
 
@@ -237,18 +237,27 @@
   z-index: 1000;
 }
 .search-bar {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0; /* Set the top threshold */
+  z-index: 1000; /* Ensure it's above other elements */
+  background-color: white; /* Optional: for better visibility against page content */
   display: flex;
-  justify-content: center; /* Centers the child horizontally */
-  margin-bottom: 20px; /* Add space below the search bar */
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px 0; /* Add padding to ensure it doesn't overlap content */
+  border-bottom: 1px solid #ddd; /* Optional: adds a line to separate from content below */
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
 }
 
 .search-bar input {
-  width: 40%; /* Set the width of the search bar to 40% */
+  width: 40%;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 
 
 .category-image {

@@ -20,12 +20,18 @@ function Category({ onCategoryClick }) {
     { id: 8, image: cat8, name: "Dairy products" },
   ];
 
+  const handleCategoryClick = (e, categoryName) => {
+    e.preventDefault(); // Prevent the default anchor click behavior
+    onCategoryClick(categoryName);
+    // If you want to scroll a bit down you can use window.scrollBy here
+    window.scrollBy({ top: 200, behavior: 'smooth' }); // Adjust the top value as needed
+  };
   return (
     <section className="category">
       <h1 className="title"> Our <span>Category</span> </h1>
       <div className="box-container">
         {categories.map(category => (
-          <a href="#" className="box" key={category.id} onClick={() => onCategoryClick(category.name)}>
+          <a href="#" className="box" key={category.id} onClick={(e) => handleCategoryClick(e, category.name)}>
             <img src={category.image} alt={category.name} className="category-image" />
             <h3>{category.name}</h3>
           </a>

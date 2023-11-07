@@ -63,7 +63,14 @@
   justify-content: center; /* Center the entire content of the grid */
 }
 
-.box {
+.products .box {
+  text-align: center;
+  text-decoration: none;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.category .box{
   text-align: center;
   text-decoration: none;
   color: #666;

@@ -1,46 +1,25 @@
 {
-  "staging": {
+  "main": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-pantryparcel-staging-210431-authRole",
-      "UnauthRoleArn": "arn:aws:iam::087499475706:role/amplify-pantryparcel-staging-210431-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::087499475706:role/amplify-pantryparcel-staging-210431-authRole",
+      "AuthRoleName": "amplify-pantryparcel-main-15713-authRole",
+      "UnauthRoleArn": "arn:aws:iam::087499475706:role/amplify-pantryparcel-main-15713-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::087499475706:role/amplify-pantryparcel-main-15713-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-pantryparcel-staging-210431-deployment",
-      "UnauthRoleName": "amplify-pantryparcel-staging-210431-unauthRole",
-      "StackName": "amplify-pantryparcel-staging-210431",
-      "StackId": "arn:aws:cloudformation:us-east-2:087499475706:stack/amplify-pantryparcel-staging-210431/457e7dc0-6ad5-11ee-852d-06d922cd5ca1",
-      "AmplifyAppId": "d1ph9juylnrng4"
+      "DeploymentBucketName": "amplify-pantryparcel-main-15713-deployment",
+      "UnauthRoleName": "amplify-pantryparcel-main-15713-unauthRole",
+      "StackName": "amplify-pantryparcel-main-15713",
+      "StackId": "arn:aws:cloudformation:us-east-2:087499475706:stack/amplify-pantryparcel-main-15713/f85d8010-7d10-11ee-9697-0aec7dc514af",
+      "AmplifyAppId": "ds7oq6fvu6j6y"
     },
     "categories": {
+      "storage": {
+        "pantryparcelb0ec9995": {
+          "bucketName": "productstorage10256-main",
+          "region": "us-east-2"
+        }
+      },
       "auth": {
         "pantryparcelapp65363ac2": {}
-      },
-      "storage": {
-        "ProductsStorage": {}
-      }
-    }
-  },
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-pantryparcelapp-dev-154843-authRole",
-      "UnauthRoleArn": "arn:aws:iam::087499475706:role/amplify-pantryparcelapp-dev-154843-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::087499475706:role/amplify-pantryparcelapp-dev-154843-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-pantryparcelapp-dev-154843-deployment",
-      "UnauthRoleName": "amplify-pantryparcelapp-dev-154843-unauthRole",
-      "StackName": "amplify-pantryparcelapp-dev-154843",
-      "StackId": "arn:aws:cloudformation:us-east-1:087499475706:stack/amplify-pantryparcelapp-dev-154843/11a258c0-6ad3-11ee-ab73-0ee8cb66e94d",
-      "AmplifyAppId": "d21mwm87izahmy"
-    },
-    "categories": {
-      "auth": {
-        "pantryparcelapp65363ac2": {}
-      },
-      "api": {
-        "pantryparcelapp": {}
-      },
-      "storage": {
-        "ProductsStorage": {}
       }
     }
   }

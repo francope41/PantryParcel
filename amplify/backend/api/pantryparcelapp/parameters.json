@@ -2,5 +2,5 @@
   "AppSyncApiName": "pantryparcelapp",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-11-01T05:56:16.381Z"
+  "AuthModeLastUpdated": "2023-11-07T03:33:19.049Z"
 }
